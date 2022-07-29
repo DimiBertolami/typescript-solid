@@ -76,6 +76,32 @@ let user:any =   {
 	console.log(user.name, user.Age, user.haircolor)
 		// outputs Dimi 43 << undefined >>
 ```
+## Interfaces!
+```javascript
+interface userType{
+	id: number,
+	name: string,
+	Age: number
+}
+let user: userType = {
+	id: 10,
+	name: "Dimi",
+	Age: 43
+}
+console.log(user.id);
+// 10
+
+let user1: userType = {
+	id: 11,
+	name: "Dimi",
+	Age: 43
+}
+console.log(user.id);
+// 11
+```
+
+
+
 ## Class: 	- A JavaScript class is not an object.
 	- It is a template for JavaScript objects.
 	- below example Passes a parameter into the "age()" method
