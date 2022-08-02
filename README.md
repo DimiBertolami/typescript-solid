@@ -15,7 +15,80 @@
 	In short: When two objects have the same interface, they are functionally interchangeable = polymorphism.
   ```
 1. I: ***Interface segregation principle***. 
-> 
+
+> In the field of software engineering, the interface-separation principle (ISP) states that no client should be forced to depend on methods it does not use.
+
+>> an interface shouldn't force a class to implement methods that it won't be using.
+
+## Let's look at an example where this principle is violated.
+
+> Imagine an interface for a fictional pizza place, where a customer can order a pizza, soda, or a combo
+
+```typescript
+interface OrderService{
+	orderPizza(pizza : string, amount : number);
+	orderDrink(drink : string, amount : number);
+	orderCombo(pizza : string, drink : string, , amount : number);
+}
+```
+
+> Since a customer can order pizza, or a drink, or both, we decided to put all order methods in a single interface.
+
+### Now, to implement a pizza-only order, we are forced to throw an exception in the orderDrink() method:
+
+```typescript
+class PizzaOrderService implements OrderService{
+	orderPizza(pizza : string, amount : number){
+		console.log(`Received order for ${pizza}. AMOUNT (${amount})`);
+	}
+	orderDrink(drink : string, amount : number){
+		throw new Exception('computer says no! #CoughsInYourFaceAlso ');
+	}
+}
+```
+> Same thing for drink-only orders
+
+## This design introduces many downsides
+
+> If we make a change to the orderDrink() in the interface, we're also going to have to implement the revised function in the pizza-order class where it isn't being used
+
+## By violating the interface separation principle, we face the following problems in our code:
+
+
+1. Client developers are confused by the methods they don’t need.
+
+1. Maintenance becomes harder because of side effects: a change in an interface forces us to change classes that don’t implement the interface.
+
+## This also forces us to violate other SOLID principles such as SRP (Single Responsibility Principle)
+
+> some code examples that could indicate a violation of the interface separation principle.
+
+## Bulky Interfaces 
+
+> When your interfaces are too bulky, it's unlikely that all your clients will use all the methods that the interface provides. The interface separation principle tells us that we need most, if not all of the methods in our interfaces, but in a bulky interface, we only need a few of them.
+
+## Unused Dependencies
+
+> In the example, we can use orderCombo() to place a pizza-only order by passing zero as the drink parameter. This client does not require the drink dependency, so we should have a separate method in a different interface to order drinks.
+
+## Methods Throwing Exceptions 
+
+> if your methods throw unexpected exceptions, this could indicate a violation of the interface separation principle. It might be wise to refactor these classes!
+
+## back to the example
+
+```typescript
+interface PizzaOrderService{
+	orderPizza(pizza : string, amount : number);
+}
+interface DrinkOrderService{
+	orderDrink(drink : string, amount : number);
+}
+```
+> two separate classes that handle their specific orders. You may say that this is redundant and you may be true, there are a million better ways to implement an ordering system. What this design did do for us was it separated the concerns and made it a more flexible. Now PizzaOrder is not coupled with DrinkOrder and their changes don't affect each other.
+
+
+
 1. D: ***Dependency inversion principle***
 > The Dependency Inversion Principle (DIP) states that high-level modules should not depend on low-level modules; both should depend on abstractions. Abstractions should not depend on details. Details should depend upon abstractions.
 
