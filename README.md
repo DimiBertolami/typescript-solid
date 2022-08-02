@@ -2,9 +2,21 @@
 ## SOLID Principles!
 
 1. S: ***Single responsibility principle***. 
+
+### Single responsibility principle states that a class should only have one reason to change
+
 > No god objects that control everything, separate them in logical classes.
 
+> as in every class should do only one thing.
+
+> refactor large classes so that every class is owned exactly by one entity
+
+> Business requirements change all the time, if your class has too many responsibilities, then these responsibilities become co-dependent of each other.
+
+> Once classes have a single responsibility they simply become much easier to work with, you can easily explain to your colleagues what the class does, and bug fixing becomes a lot easier.
+
 1. O: ***Open–closed principle***. 
+
 > Classes should be open for extension, but closed for modification
 
 ## The main goal of this principle is to keep the existing code from breaking when you implement new features.
