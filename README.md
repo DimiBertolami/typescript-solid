@@ -15,8 +15,31 @@
 	In short: When two objects have the same interface, they are functionally interchangeable = polymorphism.
   ```
 1. I: ***Interface segregation principle***. 
+> 
 1. D: ***Dependency inversion principle***
+> The Dependency Inversion Principle (DIP) states that high-level modules should not depend on low-level modules; both should depend on abstractions. Abstractions should not depend on details. Details should depend upon abstractions.
 
+
+### let's break this down:
+
+1. Client: Your main class/code that runs the high-level module.
+1. High-Level Modules: Interface/Abstraction that your client uses.
+1. Low-Level Modules: Details of your interfaces/abstraction.
+
+#### What it basically says that imagine you have a car and your different components are:
+
+1. Client: You as the person driving the car.
+1. High-Level Modules: The steering wheel and the gas/brake peddles.
+1. Low-Level Modules: Engine
+
+#### Abstractions don't depend on details.
+
+> For me, it doesn't matter whether my engine has changed or not, I still should be able to drive my car the same way.
+
+#### Details should depend upon abstractions.
+
+> I would not want an engine that causes the brake to double the speed.
+<hr>
 > First the things I needed to look up:
 
 ## Associative array: key value pairs
