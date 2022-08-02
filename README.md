@@ -7,6 +7,20 @@
 1. O: ***Open–closed principle***. 
 > Classes should be open for extension, but closed for modification
 
+## The main goal of this principle is to keep the existing code from breaking when you implement new features.
+
+### A class is:
+
+1. ***Open*** if you can extend it, and produce a subclass and do whatever you want with it—add new methods or fields, override certain behavior etc.
+
+1. ***Closed*** if it's interface is clearly defined and won’t change in the future
+
+> If a class is already developed, tested, reviewed, and used in an app, trying to mess with the code is very risky. Instead of changing the code of the class directly, you can simply create a subclass and override parts of the original class that you want to behave differently or you can extend the functionality and add your own methods or even implement interfaces!
+
+## Program by Interface, not by Implementation
+
+> ***THIS MEANS*** write your code so it uses an abstraction (abstract class or interface) instead of the implementation directly. 
+
 1. L: ***Liskov substitution principle***. 
 > Objects in a program should be replaceable with instances of their subtypes without altering the correctness of the program
   ```
@@ -85,9 +99,7 @@ interface DrinkOrderService{
 	orderDrink(drink : string, amount : number);
 }
 ```
-> two separate classes that handle their specific orders. You may say that this is redundant and you may be true, there are a million better ways to implement an ordering system. What this design did do for us was it separated the concerns and made it a more flexible. Now PizzaOrder is not coupled with DrinkOrder and their changes don't affect each other.
-
-
+> two separate classes that handle their specific orders. You may say that this is redundant and you may be true, there are a million better ways to implement an ordering system. What this design did do for us was it separated the concerns and made it a more flexible. Now PizzaOrder is not coupled with DrinkOrder and their changes don't affect each other. I will not bore you with the completion of this ordering system, because to say it in the words of wise Yoda ***Bla Bla too much, one must not!*** 
 
 1. D: ***Dependency inversion principle***
 > The Dependency Inversion Principle (DIP) states that high-level modules should not depend on low-level modules; both should depend on abstractions. Abstractions should not depend on details. Details should depend upon abstractions.
