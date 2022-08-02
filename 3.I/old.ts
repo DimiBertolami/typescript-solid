@@ -7,8 +7,8 @@ interface UserGoogleAuth {
     checkGoogleLogin(token : string) : boolean;
 }
 interface AdminAuth {
-    checkPassword(password: string) : boolean;
-    resetPassword();
+    checkPassword(password : string) : boolean;
+    resetPassword(password : string);
 }
 
 class UserFacebook implements UserFacebookAuth {
@@ -43,18 +43,32 @@ class UserGoogle implements UserGoogleAuth {
 
 //admin cannot use google or facebook token
 class Admin implements AdminAuth {
-    private _password : string = 'admin';
+    private _password : string; // = 'admin'
 
     checkPassword(password: string): boolean {
         return (password === this._password);
     }
 
-    resetPassword() {
-        this._password = prompt('What is your new password?');
+    resetPassword(password : string) {
+        this._password = password;
     }
 }
 
 // class GoogleBot implements UserAuth {}
+class GoogleBot implements UserGoogleAuth {
+    private _googleToken : string;
+
+    //Interesting detail here: while I did not define a return type or param type, any deviation from the interface will give you an error.
+    // Test it out by uncommenting the code below.
+    checkGoogleLogin(token) {
+        // return "this will not work";
+        return (token === this._googleToken);
+    }
+
+    setGoogleToken(token : string) {
+        this._googleToken = token;
+    }
+}
 
 const passwordElement = <HTMLInputElement>document.querySelector('#password');
 const typePasswordElement = <HTMLInputElement>document.querySelector('#typePassword');
@@ -78,7 +92,7 @@ document.querySelector('#login-form').addEventListener('submit', (event) => {
             guestFacebook.setFacebookToken('secret_token_google');
         }
         if (loginAsAdminElement.checked){
-            admin.resetPassword()
+            admin.checkPassword(passwordElement.value);
         }
     }
     debugger;
@@ -116,6 +130,6 @@ if (typeGoogleElement.checked){
     guestGoogle.setGoogleToken(passwordElement.value);
 }
 if (loginAsAdminElement.checked){
-    admin.resetPassword()
+    admin.resetPassword(passwordElement.value);
 }
 });

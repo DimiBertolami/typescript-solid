@@ -28,17 +28,30 @@ var UserGoogle = /** @class */ (function () {
 //admin cannot use google or facebook token
 var Admin = /** @class */ (function () {
     function Admin() {
-        this._password = 'admin';
     }
     Admin.prototype.checkPassword = function (password) {
         return (password === this._password);
     };
-    Admin.prototype.resetPassword = function () {
-        this._password = prompt('What is your new password?');
+    Admin.prototype.resetPassword = function (password) {
+        this._password = password;
     };
     return Admin;
 }());
 // class GoogleBot implements UserAuth {}
+var GoogleBot = /** @class */ (function () {
+    function GoogleBot() {
+    }
+    //Interesting detail here: while I did not define a return type or param type, any deviation from the interface will give you an error.
+    // Test it out by uncommenting the code below.
+    GoogleBot.prototype.checkGoogleLogin = function (token) {
+        // return "this will not work";
+        return (token === this._googleToken);
+    };
+    GoogleBot.prototype.setGoogleToken = function (token) {
+        this._googleToken = token;
+    };
+    return GoogleBot;
+}());
 var passwordElement = document.querySelector('#password');
 var typePasswordElement = document.querySelector('#typePassword');
 var typeGoogleElement = document.querySelector('#typeGoogle');
@@ -58,7 +71,7 @@ document.querySelector('#login-form').addEventListener('submit', function (event
             guestFacebook.setFacebookToken('secret_token_google');
         }
         if (loginAsAdminElement.checked) {
-            admin.resetPassword();
+            admin.checkPassword(passwordElement.value);
         }
     }
     debugger;
@@ -93,6 +106,6 @@ resetPasswordElement.addEventListener('click', function (event) {
         guestGoogle.setGoogleToken(passwordElement.value);
     }
     if (loginAsAdminElement.checked) {
-        admin.resetPassword();
+        admin.resetPassword(passwordElement.value);
     }
 });
