@@ -167,8 +167,7 @@ interface DrinkOrderService{
 	- let user = 	{
 			  "id": 1,
 			  "name": "Dimi",
-			  "Age":  43,
-			  "sex": UNDEFINED
+			  "Age":  43
 	};
 ```
 > declaring associative array by using the map object:
@@ -199,8 +198,7 @@ code problems!
 	- let user = {
 			id: 1,
     			name: "Dimi",
-			Age: 43,
-			sex: false
+			Age: 43
 	};
 
 	console.log(user.name, user.Age, user.haircolor)
@@ -213,13 +211,25 @@ code problems!
 let user:any =   {
 			id: 1,
     			name: "Dimi",
-			Age: 43,
-			sex: Null
+			Age: 43
 	};
 	console.log(user.name, user.Age, user.haircolor)
 		// outputs Dimi 43 << undefined >>
 ```
 ## Interfaces!
+
+> Think of an interface as a contract between an object and its clients. That is the interface specifies the things that an object can do, and the signatures for accessing those things.
+
+> Implementations are the actual behaviours. Say for example you have a method sort(). You can implement QuickSort or MergeSort. That should not matter to the client code calling sort as long as the interface does not change.
+
+> Libraries like the Java API and the .NET Framework make heavy use of interfaces because millions of programmers use the objects provided. The creators of these libraries have to be very careful that they do not change the interface to the classes in these libraries because it will affect all programmers using the library. On the other hand they can change the implementation as much as they like.
+
+> If, as a programmer, you code against the implementation then as soon as it changes your code stops working. So think of the benefits of the interface this way:
+
+1. it hides the things you do not need to know making the object simpler to use.
+1. it provides the contract of how the object will behave so you can depend on that
+
+
 ```javascript
 interface userType{
 	id: number,
