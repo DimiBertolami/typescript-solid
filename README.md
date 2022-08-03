@@ -1,9 +1,10 @@
 # typescript-solid
-## SOLID Principles!
 
-1. S: ***Single responsibility principle***. 
+### SOLID Principles!
 
-### Single responsibility principle states that a class should only have one reason to change
+# S: Single responsibility principle 
+
+#### Single responsibility principle states that a class should only have one reason to change
 
 > No god objects that control everything, separate them in logical classes.
 
@@ -15,7 +16,9 @@
 
 > Once classes have a single responsibility they simply become much easier to work with, you can easily explain to your colleagues what the class does, and bug fixing becomes a lot easier.
 
-1. O: ***Open–closed principle***. 
+<hr>
+
+# O: ***Open–closed principle***. 
 
 > Classes should be open for extension, but closed for modification
 
@@ -33,14 +36,25 @@
 
 > ***THIS MEANS*** write your code so it uses an abstraction (abstract class or interface) instead of the implementation directly. 
 
-1. L: ***Liskov substitution principle***. 
+# L: Liskov substitution principle
+
+### the Liskov Substitution Principle (LSP) states that objects of a superclass should be replaceable with objects of its subclasses without breaking the application. In other words, what we want is to have the objects of our subclasses behaving the same way as the objects of our superclass.
+
 > Objects in a program should be replaceable with instances of their subtypes without altering the correctness of the program
-  ```
-	If 2 different classes use the same interface, 
-	  so they have the same function names: the code that uses this class does not care about which one class it receives. 
-	In short: When two objects have the same interface, they are functionally interchangeable = polymorphism.
-  ```
-1. I: ***Interface segregation principle***. 
+
+> If 2 different classes use the same interface, they are functionally interchangeable = polymorphism.
+
+![image](https://user-images.githubusercontent.com/77209365/182551131-372f648d-f6ef-4516-be06-d7f903a2cb3b.png)
+![image](https://user-images.githubusercontent.com/77209365/182551406-5b521487-a466-4891-80bf-816c163f2972.png)
+
+> The Liskov Substitution principle extends the Open/Closed principle and enables you to replace objects of a parent class with objects of a subclass without breaking the application. This requires all subclasses to behave in the same way as the parent class. To achieve that, your subclasses need to follow these rules:
+
+1. Don’t implement any stricter validation rules on input parameters than implemented by the parent class.
+1. Apply at the least the same rules to all output parameters as applied by the parent class.
+
+<hr>
+  
+# I: Interface segregation principle 
 
 > In the field of software engineering, the interface-separation principle (ISP) states that no client should be forced to depend on methods it does not use.
 
@@ -111,9 +125,11 @@ interface DrinkOrderService{
 	orderDrink(drink : string, amount : number);
 }
 ```
-> two separate classes that handle their specific orders. You may say that this is redundant and you may be true, there are a million better ways to implement an ordering system. What this design did do for us was it separated the concerns and made it a more flexible. Now PizzaOrder is not coupled with DrinkOrder and their changes don't affect each other. I will not bore you with the completion of this ordering system, because to say it in the words of wise Yoda ***Bla Bla too much, one must not!*** 
+> two separate classes that handle their specific orders. You may say that this is redundant and you may be true, there are a million better ways to implement an ordering system. What this design did do for us was it separated the concerns and made it a more flexible. Now PizzaOrder is not coupled with DrinkOrder and their changes don't affect each other. I will not bore you with the completion of this ordering system, because to say it in the words of wise Yoda ***Bla Bla too much, one must not!***
 
-1. D: ***Dependency inversion principle***
+<hr>
+
+# D: Dependency inversion principle
 > The Dependency Inversion Principle (DIP) states that high-level modules should not depend on low-level modules; both should depend on abstractions. Abstractions should not depend on details. Details should depend upon abstractions.
 
 
