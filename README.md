@@ -34,6 +34,13 @@
 
 ## Program by Interface, not by Implementation
 
+### Bad structure
+![image](https://user-images.githubusercontent.com/77209365/182554715-44f77366-d1d3-4dc9-baa6-3dc687983fc2.png)
+
+### Turns into
+![image](https://user-images.githubusercontent.com/77209365/182554872-289ab0d9-98ff-40d6-ae37-323dba2f7af4.png)
+
+
 > ***THIS MEANS*** write your code so it uses an abstraction (abstract class or interface) instead of the implementation directly. 
 
 # L: Liskov substitution principle
